@@ -1,0 +1,17 @@
+{
+    "projectName": "octank-ecommerce",
+    "version": "2.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "angular",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "dist/octank-ecommerce",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "ng serve"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}

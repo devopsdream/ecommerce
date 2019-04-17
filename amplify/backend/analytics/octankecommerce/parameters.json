@@ -1,0 +1,20 @@
+{
+    "appName": "octankecommerce",
+    "roleName": "pinpointLambdaRole98d88e0c",
+    "cloudWatchPolicyName": "cloudWatchPolicy98d88e0c",
+    "pinpointPolicyName": "pinpointPolicy98d88e0c",
+    "authPolicyName": "pinpoint_amplify_98d88e0c",
+    "unauthPolicyName": "pinpoint_amplify_98d88e0c",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

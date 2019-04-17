@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"cognito3bb21854": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"octankecommerce": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}
