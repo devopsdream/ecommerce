@@ -1,0 +1,32 @@
+type Product
+@model {
+  id: ID!
+  name: String!
+  sku: String!
+  imageurl: String!
+  department: [String]
+  price: Float!
+}
+type Cart
+@auth(rules: [{ allow: owner },])
+@model {
+  id: ID!
+  product: String!
+  department: [String]
+  sku: String!
+  price: Float!
+  owner: String!
+}
+
+type Query {
+  getProducts: [Product]
+}
+
+type Query {
+  getProduct: Product
+}
+
+type Query {
+  getCarts: [Cart]
+}
+
