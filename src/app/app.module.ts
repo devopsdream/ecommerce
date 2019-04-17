@@ -12,6 +12,11 @@ import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './cart/order/order.component';
 import { DefaultComponent } from './home/default/default.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductRowComponent } from './product-row/product-row.component';
+import { ProductImageComponent } from './product-image/product-image.component';
+import { ProductDepartmentComponent } from './product-department/product-department.component';
+import { ProductDisplayComponent } from './product-display/product-display.component';
+import { PriceDisplayComponent } from './price-display/price-display.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { ProductListComponent } from './product-list/product-list.component';
     CartComponent,
     OrderComponent,
     DefaultComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductRowComponent,
+    ProductImageComponent,
+    ProductDepartmentComponent,
+    ProductDisplayComponent,
+    PriceDisplayComponent
   ],
   imports: [
     BrowserModule,
