@@ -1,0 +1,65 @@
+# this is an auto generated file. This will be overwritten
+query GetProducts {
+  getProducts {
+    id
+    name
+    sku
+    imageurl
+    department
+    price
+  }
+}
+query GetProduct($id: ID!) {
+  getProduct(id: $id) {
+    id
+    name
+    sku
+    imageurl
+    department
+    price
+  }
+}
+query ListProducts(
+  $filter: ModelProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      sku
+      imageurl
+      department
+      price
+    }
+    nextToken
+  }
+}
+query GetCart($id: ID!) {
+  getCart(id: $id) {
+    id
+    product
+    department
+    sku
+    price
+    owner
+  }
+}
+query ListCarts(
+  $filter: ModelCartFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      product
+      department
+      sku
+      price
+      owner
+    }
+    nextToken
+  }
+}

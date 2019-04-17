@@ -1,0 +1,16 @@
+projects:
+  octankecommerce:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.graphql
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: angular
+        generatedFileName: src/app/API.service.ts
+        docsFilePath: src/graphql
+        graphQLApiId: gd3chnvnqneflezew2qhxl6sdm
+      endpoints:
+        prod: >-
+          https://orz4j5pdinbhhitnx7wbe7h2km.appsync-api.us-east-1.amazonaws.com/graphql

@@ -1,0 +1,61 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    id
+    name
+    sku
+    imageurl
+    department
+    price
+  }
+}
+mutation UpdateProduct($input: UpdateProductInput!) {
+  updateProduct(input: $input) {
+    id
+    name
+    sku
+    imageurl
+    department
+    price
+  }
+}
+mutation DeleteProduct($input: DeleteProductInput!) {
+  deleteProduct(input: $input) {
+    id
+    name
+    sku
+    imageurl
+    department
+    price
+  }
+}
+mutation CreateCart($input: CreateCartInput!) {
+  createCart(input: $input) {
+    id
+    product
+    department
+    sku
+    price
+    owner
+  }
+}
+mutation UpdateCart($input: UpdateCartInput!) {
+  updateCart(input: $input) {
+    id
+    product
+    department
+    sku
+    price
+    owner
+  }
+}
+mutation DeleteCart($input: DeleteCartInput!) {
+  deleteCart(input: $input) {
+    id
+    product
+    department
+    sku
+    price
+    owner
+  }
+}
