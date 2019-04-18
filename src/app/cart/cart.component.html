@@ -1,3 +1,36 @@
-<p>
-  cart works!
-</p>
+<div class="ui main text container inventory-app">
+  <div class="header center aligned">
+    <h2>My Shopping Cart </h2>
+  </div>
+  <table class="ui celled table">
+    <thead>
+    <tr>
+      <th>Item</th>
+      <th>Product</th>
+      <th>Department</th>
+      <th>SKU</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of cart; index as i">
+      <td>{{ i }}</td>
+      <td>{{ item.product }}</td>
+      <td>{{ item.department }}</td>
+      <td>{{ item.sku }}</td>
+      <td><span class="price-display">{{ item.price | currency  }}</span></td>
+      <td><button class="negative ui basic button" (click)="onDelete(item)">remove</button></td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h2 class="ui center aligned header">Total</h2>
+      </td>
+      <td><h2><span class="price-display">{{ getTotal() | currency }}</span></h2></td>
+      <td><button class="ui button green" (click)="checkOut()">checkout</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <app-footer></app-footer>
+</div>
+
