@@ -7,7 +7,7 @@ import Amplify from 'aws-amplify';
 import amplify from './aws-exports';
 
 Amplify.configure(amplify);
-Amplify.Logger.LOG_LEVEL = 'DEBUG';
+// Amplify.Logger.LOG_LEVEL = 'DEBUG';
 
 if (environment.production) {
   enableProdMode();

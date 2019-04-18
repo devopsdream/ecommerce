@@ -1,6 +1,8 @@
 import {Component, OnInit, ɵcontainerRefreshStart} from '@angular/core';
 import { APIService} from '../API.service';
 import { Router } from '@angular/router';
+import {AmplifyService} from 'aws-amplify-angular';
+import {Auth} from 'aws-amplify';
 
 @Component({
   selector: 'app-cart',
@@ -9,11 +11,23 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
 
+  private userName: string;
+
   total = 0;
 
   cart: any = [];
 
-  constructor(private api: APIService, private router: Router) { }
+  constructor(private api: APIService,
+              private router: Router,
+              private amplifyService: AmplifyService) {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false
+    }).then(user => {
+      this.userName = user.username;
+      // console.log(this.userName);
+    })
+      .catch(err => console.log(err));
+  }
 
   ngOnInit() {
     this.api.ListCarts().then(data => {
@@ -39,8 +53,21 @@ export class CartComponent implements OnInit {
     return this.cart.map(t => t.price).reduce((acc, value) => acc + value, 0);
   }
 
-  checkOut(item) {
+  checkOut() {
     this.router.navigateByUrl('/order');
+    this.clearCart();
+    this.amplifyService.analytics().record({
+      name: 'checkOut',
+      attributes: { owner: this.userName }
+    });
+  }
+  clearCart() {
+    console.log('delete all the items in the cart after checkout');
+    for ( const item of this.cart) {
+      const payload = {id: item.id};
+      console.log(item);
+      this.onDelete(payload);
+    }
   }
 }
 

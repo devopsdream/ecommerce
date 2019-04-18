@@ -1,6 +1,7 @@
 import { Component, OnInit, Input  } from '@angular/core';
 import { APIService} from '../API.service';
 import { Auth } from 'aws-amplify';
+import {AmplifyService} from 'aws-amplify-angular';
 
 @Component({
   selector: 'app-price-display',
@@ -13,13 +14,13 @@ export class PriceDisplayComponent implements OnInit {
 
   @Input() product: any;
 
-  constructor(private  api: APIService) {
+  constructor(private  api: APIService, private amplifyService: AmplifyService) {
 
   }
 
   ngOnInit() {
     Auth.currentAuthenticatedUser({
-      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+      bypassCache: false
     }).then(user => {
       this.userName = user.username;
       // console.log(this.userName);
@@ -37,7 +38,13 @@ export class PriceDisplayComponent implements OnInit {
       console.log('Product was added', data);
     }).
     catch(err => console.log(err));
-    console.log('Product added to the cart: ', this.product);
+    // console.log('Product added to the cart: ', this.product);
+    // send event to pinpoint
+    this.amplifyService.analytics().record({
+      name: 'AddToCart',
+      attributes: { product: this.product.name , price: String(this.product.price),
+      owner: this.userName, sku: this.product.sku}
+    });
   }
 }
 
