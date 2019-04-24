@@ -28,6 +28,7 @@
 
 .product-row {
   border-bottom: 1px solid black;
+  cursor: pointer;
 }
 
 .product-image {

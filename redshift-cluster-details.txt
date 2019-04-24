@@ -1,0 +1,42 @@
+cluster_name: octank-cluster-1
+cluster_database: octank
+cluster_username: admin
+cluster_password: Passw0rd1
+columns: event_type,event_timestamp,arrival_timestamp,event_version,application_app_id,application_package_name,application_version_name,application_version_code,application_title,application_cognito_identity_pool_id,application_sdk_name,application_sdk_version,client_id,client_cognito_id,device_model,device_make,device_platform_name,device_platform_version,device_locale_code,device_locale_language,device_locale_country,session_id,session_start_timestamp,session_stop_timestamp,monetization_transaction_id,monetization_transaction_store,monetization_transaction_item_id,monetization_transaction_quantity,monetization_transaction_price_reported,monetization_transaction_price_amount,monetization_transaction_price_currency_code,monetization_transaction_price_currency_symbol,a_owner,a_price,a_product,a_sku,a_department,product_was_selected,product_was_purchased,item_removed_from_cart,item_added_to_cart
+###
+{
+  "jsonpaths": [
+    "$['event_type']",
+    "$['event_timestamp']",
+    "$['arrival_timestamp']",
+    "$['event_version']",
+    "$['application']['app_id']",
+    "$['application']['package_name']",
+    "$['application']['version_name']",
+    "$['application']['version_code']",
+    "$['application']['title']",
+    "$['application']['cognito_identity_pool_id']",
+    "$['application']['sdk']['name']",
+    "$['application']['sdk']['version']",
+    "$['client']['client_id']",
+    "$['client']['cognito_id']",
+    "$['device']['model']",
+    "$['device']['make']",
+    "$['device']['platform']['name']",
+    "$['device']['platform']['version']",
+    "$['device']['locale']['code']",
+    "$['device']['locale']['language']",
+    "$['device']['locale']['country']",
+    "$['session']['session_id']",
+    "$['session']['start_timestamp']",
+    "$['session']['stop_timestamp']",
+    "$['monetization']['transaction']['transaction_id']",
+    "$['monetization']['transaction']['store']",
+    "$['monetization']['transaction']['item_id']",
+    "$['monetization']['transaction']['quantity']",
+    "$['monetization']['transaction']['price']['reported_price']",
+    "$['monetization']['transaction']['price']['amount']",
+    "$['monetization']['transaction']['price']['currency']['code']",
+    "$['monetization']['transaction']['price']['currency']['symbol']"
+  ]
+}

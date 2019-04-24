@@ -9,10 +9,21 @@ import {routerNgProbeToken} from '@angular/router/src/router_module';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  signedIn: boolean;
+  user: any;
 
 
   constructor(private amplifyservice: AmplifyService, private router: Router) {
     this.amplifyservice.analytics();
+    this.amplifyservice.authStateChange$
+      .subscribe(authState => {
+        this.signedIn = authState.state === 'signedIn';
+        if (!authState.user) {
+          this.user = null;
+        } else {
+          this.user = authState.user;
+        }
+      });
   }
 
   ngOnInit() {
@@ -38,5 +49,15 @@ export class HeaderComponent implements OnInit {
   }
 
 
+  signInout() {
+    console.log('signing out');
+    this.amplifyservice.auth().signOut()
+      .then(data => {
+        console.log(data);
+        this.router.navigateByUrl('/home');
+      })
+      .catch(data => console.log(data));
+
+  }
 }
 

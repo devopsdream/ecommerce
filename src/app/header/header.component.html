@@ -18,6 +18,11 @@
         <i class="icon cart"></i>
       </div>
     </div>
+    <div class="item" *ngIf="signedIn">
+      <div class="ui violet basic button" (click)="signInout()">signout
+        <i class="icon sign-out"></i>
+      </div>
+    </div>
   </div>
 </div>
 

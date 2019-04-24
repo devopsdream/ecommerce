@@ -43,7 +43,7 @@ export class PriceDisplayComponent implements OnInit {
     this.amplifyService.analytics().record({
       name: 'AddToCart',
       attributes: { product: this.product.name , price: String(this.product.price),
-      owner: this.userName, sku: this.product.sku}
+      owner: this.userName, sku: this.product.sku, item_added_to_cart: 'true'}
     });
   }
 }

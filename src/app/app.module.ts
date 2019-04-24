@@ -17,7 +17,8 @@ import { ProductImageComponent } from './product-image/product-image.component';
 import { ProductDepartmentComponent } from './product-department/product-department.component';
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { PriceDisplayComponent } from './price-display/price-display.component';
-
+import {SuiModule} from 'ng2-semantic-ui';
+import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,12 +34,14 @@ import { PriceDisplayComponent } from './price-display/price-display.component';
     ProductImageComponent,
     ProductDepartmentComponent,
     ProductDisplayComponent,
-    PriceDisplayComponent
+    PriceDisplayComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AmplifyAngularModule
+    AmplifyAngularModule,
+    SuiModule
   ],
   providers: [
     AmplifyService
