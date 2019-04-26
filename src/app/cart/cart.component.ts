@@ -3,6 +3,7 @@ import { APIService} from '../API.service';
 import { Router } from '@angular/router';
 import {AmplifyService} from 'aws-amplify-angular';
 import {Auth} from 'aws-amplify';
+import {getToken} from 'codelyzer/angular/styles/cssLexer';
 
 @Component({
   selector: 'app-cart',
@@ -53,19 +54,25 @@ export class CartComponent implements OnInit {
     return this.cart.map(t => t.price).reduce((acc, value) => acc + value, 0);
   }
 
-  checkOut() {
+  checkOut(item) {
     this.router.navigateByUrl('/order');
     this.clearCart();
+    console.log('checking out ' + item);
     this.amplifyService.analytics().record({
       name: 'checkOut',
-      attributes: { owner: this.userName }
+      attributes: { owner: this.userName, price: String(this.getTotal()) }
     });
   }
   clearCart() {
     console.log('delete all the items in the cart after checkout');
     for ( const item of this.cart) {
       const payload = {id: item.id};
-      console.log(item);
+      // console.log('Purchased: ' + item.product);
+      this.amplifyService.analytics().record({
+        name: 'productPurchased',
+        attributes: { owner: this.userName, product: item.product,
+        product_was_purchased: 'true'}
+      });
       this.onDelete(payload);
     }
   }
