@@ -1,7 +1,8 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import {Component, OnInit, Input, Directive} from '@angular/core';
 import { APIService} from '../API.service';
 import { Auth } from 'aws-amplify';
 import {AmplifyService} from 'aws-amplify-angular';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-price-display',
@@ -13,8 +14,10 @@ export class PriceDisplayComponent implements OnInit {
   private userName: string;
 
   @Input() product: any;
+  @Input() message: string;
 
-  constructor(private  api: APIService, private amplifyService: AmplifyService) {
+  constructor(private  api: APIService, private amplifyService: AmplifyService,
+              private toasterService: ToastrService) {
 
   }
 
@@ -36,6 +39,7 @@ export class PriceDisplayComponent implements OnInit {
       sku: this.product.sku, price: this.product.price, owner: this.userName};
     this.api.CreateCart(this.product).then(data => {
       console.log('Product was added', data);
+      this.toasterService.success('Added to cart', 'Message');
     }).
     catch(err => console.log(err));
     // console.log('Product added to the cart: ', this.product);

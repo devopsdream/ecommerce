@@ -19,6 +19,10 @@ import { ProductDisplayComponent } from './product-display/product-display.compo
 import { PriceDisplayComponent } from './price-display/price-display.component';
 import {SuiModule} from 'ng2-semantic-ui';
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
+import { PopupDirective } from './price-display/popup.directive';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,16 +39,20 @@ import { ProductDetailComponent } from './product-list/product-detail/product-de
     ProductDepartmentComponent,
     ProductDisplayComponent,
     PriceDisplayComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    PopupDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AmplifyAngularModule,
-    SuiModule
+    SuiModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
-    AmplifyService
+    AmplifyService,
+    ToastrService
   ],
   bootstrap: [AppComponent]
 })
